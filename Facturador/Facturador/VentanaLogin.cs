@@ -11,9 +11,10 @@ using System.Data.SqlClient;
 using LibreriaFacturador;
 namespace Facturador
 {
-    public partial class Form1 : Form
+    public partial class VentanaLogin : Form
     {
-        public Form1()
+        public static string Codigo { get; set; }
+        public VentanaLogin()
         {
             InitializeComponent();
         }
@@ -26,19 +27,39 @@ namespace Facturador
                     txtAccount.Text.Trim(), txtPassword.Text.Trim());
                 DataSet data = Utilidades.Ejecutar(Cmd);
 
+                Codigo = data.Tables[0].Rows[0]["Id_Usuario"].ToString().Trim();
                 var cuenta = data.Tables[0].Rows[0]["Account"].ToString().Trim();
                 var password = data.Tables[0].Rows[0]["Password"].ToString().Trim();
 
                 if(cuenta == txtAccount.Text.Trim() && password == txtPassword.Text.Trim())
                 {
-                    MessageBox.Show("Se inicio con exito");
+                    if ((bool)data.Tables[0].Rows[0]["Status_Admin"] == true)
+                    {
+                        VentanaAdmin Admin = new VentanaAdmin();
+                        this.Hide();
+                        Admin.Show();
+                    }
+                    else
+                    {
+                        VentanaUser User = new VentanaUser();
+                        this.Hide();
+                        User.Show();
+                    }
                 }
 
             }
             catch (Exception error)
             {
                 MessageBox.Show("Error: Usuario o Contraseña incorrecta");
+                txtAccount.Text = "";
+                txtPassword.Text = "";
+                txtAccount.Focus();
             }
+        }
+
+        private void VentanaLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
