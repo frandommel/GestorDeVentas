@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using LibreriaFacturador;
 namespace Facturador
 {
-    public partial class VentanaLogin : Form
+    public partial class VentanaLogin : VentanaBase
     {
         public static string Codigo { get; set; }
         public VentanaLogin()

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LibreriaFacturador;
 namespace Facturador
 {
-    public partial class VentanaAdmin : Form
+    public partial class VentanaAdmin : VentanaBase
     {
         public VentanaAdmin()
         {
@@ -32,6 +32,13 @@ namespace Facturador
             labelCodigo.Text = VentanaLogin.Codigo;
             pictureBox1.Image = Image.FromFile(Ds.Tables[0].Rows[0]["Foto"].ToString());
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ContenedorPrincipal Contenedor = new ContenedorPrincipal();
+            this.Hide();
+            Contenedor.Show();
         }
     }
 }

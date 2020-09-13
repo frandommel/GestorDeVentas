@@ -46,10 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContenedorPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContenedorPrincipal.Designer.cs">
+      <DependentUpon>ContenedorPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoCliente.Designer.cs">
+      <DependentUpon>MantenimientoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MantenimientoProducto.Designer.cs">
+      <DependentUpon>MantenimientoProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaBase.Designer.cs">
+      <DependentUpon>VentanaBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaConsultas.Designer.cs">
+      <DependentUpon>VentanaConsultas.cs</DependentUpon>
     </Compile>
     <Compile Include="VentanaLogin.cs">
       <SubType>Form</SubType>
@@ -65,12 +95,36 @@
     <Compile Include="VentanaAdmin.Designer.cs">
       <DependentUpon>VentanaAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="VentanaMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaMantenimiento.Designer.cs">
+      <DependentUpon>VentanaMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaProcesos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaProcesos.Designer.cs">
+      <DependentUpon>VentanaProcesos.cs</DependentUpon>
+    </Compile>
     <Compile Include="VentanaUser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VentanaUser.Designer.cs">
       <DependentUpon>VentanaUser.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ContenedorPrincipal.resx">
+      <DependentUpon>ContenedorPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoCliente.resx">
+      <DependentUpon>MantenimientoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MantenimientoProducto.resx">
+      <DependentUpon>MantenimientoProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaBase.resx">
+      <DependentUpon>VentanaBase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaLogin.resx">
       <DependentUpon>VentanaLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaAdmin.resx">
       <DependentUpon>VentanaAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaMantenimiento.resx">
+      <DependentUpon>VentanaMantenimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaUser.resx">
       <DependentUpon>VentanaUser.cs</DependentUpon>

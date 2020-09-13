@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Facturador
 {
-    public partial class VentanaUser : Form
+    public partial class VentanaUser : VentanaBase
     {
         public VentanaUser()
         {
@@ -20,6 +20,13 @@ namespace Facturador
         private void VentanaUser_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ContenedorPrincipal Contenedor = new ContenedorPrincipal();
+            this.Hide();
+            Contenedor.Show();
         }
     }
 }
