@@ -122,5 +122,12 @@ namespace Facturador
         {
             Application.Exit();
         }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ConsultarCliente CCliente = new ConsultarCliente();
+            CCliente.MdiParent = this;
+            CCliente.Show();
+        }
     }
 }
