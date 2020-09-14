@@ -129,5 +129,12 @@ namespace Facturador
             CCliente.MdiParent = this;
             CCliente.Show();
         }
+
+        private void productoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConsultarProducto CProducto = new ConsultarProducto();
+            CProducto.MdiParent = this;
+            CProducto.Show();
+        }
     }
 }

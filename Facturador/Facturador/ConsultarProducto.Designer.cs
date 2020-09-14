@@ -30,6 +30,10 @@
         {
             this.SuspendLayout();
             // 
+            // button3
+            // 
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // ConsultarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -37,6 +41,7 @@
             this.ClientSize = new System.Drawing.Size(700, 443);
             this.Name = "ConsultarProducto";
             this.Text = "ConsultarProducto";
+            this.Load += new System.EventHandler(this.ConsultarProducto_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
