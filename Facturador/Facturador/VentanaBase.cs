@@ -24,19 +24,19 @@ namespace Facturador
                 this.Close();
             }
         }
-        protected virtual void Eliminar()
+        public virtual void Eliminar()
         {
 
         }
-        protected virtual void Nuevo()
+        public virtual void Nuevo()
         {
 
         }
-        protected virtual void Consultar()
+        public virtual void Consultar()
         {
 
         }
-        protected virtual bool Guardar()
+        public virtual bool Guardar()
         {
             return false;
         }
