@@ -136,5 +136,12 @@ namespace Facturador
             CProducto.MdiParent = this;
             CProducto.Show();
         }
+
+        private void facturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Facturacion factur = new Facturacion();
+            factur.MdiParent = this;
+            factur.Show();
+        }
     }
 }
