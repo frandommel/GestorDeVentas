@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnColocar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCliente = new System.Windows.Forms.Button();
@@ -45,6 +45,11 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -57,11 +62,6 @@
             this.txtDescripcion = new LibreriaFacturador.ErrorTxtBox();
             this.txtPrecio = new LibreriaFacturador.ErrorTxtBox();
             this.txtCantidad = new LibreriaFacturador.ErrorTxtBox();
-            this.ColCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -90,6 +90,7 @@
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCliente
             // 
@@ -99,6 +100,7 @@
             this.btnCliente.TabIndex = 3;
             this.btnCliente.Text = "Cliente";
             this.btnCliente.UseVisualStyleBackColor = true;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
             // btnProducto
             // 
@@ -108,6 +110,7 @@
             this.btnProducto.TabIndex = 4;
             this.btnProducto.Text = "Productos";
             this.btnProducto.UseVisualStyleBackColor = true;
+            this.btnProducto.Click += new System.EventHandler(this.btnProducto_Click);
             // 
             // btnNuevo
             // 
@@ -117,6 +120,7 @@
             this.btnNuevo.TabIndex = 5;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnFacturar
             // 
@@ -196,10 +200,12 @@
             // lblTotal
             // 
             this.lblTotal.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.Location = new System.Drawing.Point(671, 520);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(104, 28);
             this.lblTotal.TabIndex = 13;
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -230,12 +236,52 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(763, 263);
             this.dataGridView1.TabIndex = 15;
+            // 
+            // ColCodigo
+            // 
+            this.ColCodigo.HeaderText = "Codigo";
+            this.ColCodigo.MinimumWidth = 6;
+            this.ColCodigo.Name = "ColCodigo";
+            this.ColCodigo.ReadOnly = true;
+            this.ColCodigo.Width = 110;
+            // 
+            // ColDescripcion
+            // 
+            this.ColDescripcion.HeaderText = "Descripcion";
+            this.ColDescripcion.MinimumWidth = 6;
+            this.ColDescripcion.Name = "ColDescripcion";
+            this.ColDescripcion.ReadOnly = true;
+            this.ColDescripcion.Width = 175;
+            // 
+            // ColPrecio
+            // 
+            this.ColPrecio.HeaderText = "Precio";
+            this.ColPrecio.MinimumWidth = 6;
+            this.ColPrecio.Name = "ColPrecio";
+            this.ColPrecio.ReadOnly = true;
+            this.ColPrecio.Width = 110;
+            // 
+            // ColCantidad
+            // 
+            this.ColCantidad.HeaderText = "Cantidad";
+            this.ColCantidad.MinimumWidth = 6;
+            this.ColCantidad.Name = "ColCantidad";
+            this.ColCantidad.ReadOnly = true;
+            this.ColCantidad.Width = 110;
+            // 
+            // ColImporte
+            // 
+            this.ColImporte.HeaderText = "Importe";
+            this.ColImporte.MinimumWidth = 6;
+            this.ColImporte.Name = "ColImporte";
+            this.ColImporte.ReadOnly = true;
+            this.ColImporte.Width = 110;
             // 
             // pictureBox1
             // 
@@ -287,7 +333,7 @@
             this.lblAtiende.Location = new System.Drawing.Point(141, 42);
             this.lblAtiende.Name = "lblAtiende";
             this.lblAtiende.Size = new System.Drawing.Size(115, 28);
-            this.lblAtiende.TabIndex = 27;
+            this.lblAtiende.TabIndex = 21;
             this.lblAtiende.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // errorProvider1
@@ -309,7 +355,7 @@
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(210, 22);
             this.txtCliente.SoloNumeros = false;
-            this.txtCliente.TabIndex = 21;
+            this.txtCliente.TabIndex = 23;
             this.txtCliente.Validar = true;
             // 
             // txtCodigoProducto
@@ -318,7 +364,7 @@
             this.txtCodigoProducto.Name = "txtCodigoProducto";
             this.txtCodigoProducto.Size = new System.Drawing.Size(100, 22);
             this.txtCodigoProducto.SoloNumeros = false;
-            this.txtCodigoProducto.TabIndex = 20;
+            this.txtCodigoProducto.TabIndex = 24;
             this.txtCodigoProducto.Validar = true;
             // 
             // txtDescripcion
@@ -327,7 +373,7 @@
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(196, 22);
             this.txtDescripcion.SoloNumeros = false;
-            this.txtDescripcion.TabIndex = 19;
+            this.txtDescripcion.TabIndex = 25;
             this.txtDescripcion.Validar = true;
             // 
             // txtPrecio
@@ -336,7 +382,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 22);
             this.txtPrecio.SoloNumeros = false;
-            this.txtPrecio.TabIndex = 18;
+            this.txtPrecio.TabIndex = 26;
             this.txtPrecio.Validar = true;
             // 
             // txtCantidad
@@ -345,48 +391,8 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(100, 22);
             this.txtCantidad.SoloNumeros = false;
-            this.txtCantidad.TabIndex = 17;
+            this.txtCantidad.TabIndex = 27;
             this.txtCantidad.Validar = true;
-            // 
-            // ColCodigo
-            // 
-            this.ColCodigo.HeaderText = "Codigo";
-            this.ColCodigo.MinimumWidth = 6;
-            this.ColCodigo.Name = "ColCodigo";
-            this.ColCodigo.ReadOnly = true;
-            this.ColCodigo.Width = 110;
-            // 
-            // ColDescripcion
-            // 
-            this.ColDescripcion.HeaderText = "Descripcion";
-            this.ColDescripcion.MinimumWidth = 6;
-            this.ColDescripcion.Name = "ColDescripcion";
-            this.ColDescripcion.ReadOnly = true;
-            this.ColDescripcion.Width = 175;
-            // 
-            // ColPrecio
-            // 
-            this.ColPrecio.HeaderText = "Precio";
-            this.ColPrecio.MinimumWidth = 6;
-            this.ColPrecio.Name = "ColPrecio";
-            this.ColPrecio.ReadOnly = true;
-            this.ColPrecio.Width = 110;
-            // 
-            // ColCantidad
-            // 
-            this.ColCantidad.HeaderText = "Cantidad";
-            this.ColCantidad.MinimumWidth = 6;
-            this.ColCantidad.Name = "ColCantidad";
-            this.ColCantidad.ReadOnly = true;
-            this.ColCantidad.Width = 110;
-            // 
-            // ColImporte
-            // 
-            this.ColImporte.HeaderText = "Importe";
-            this.ColImporte.MinimumWidth = 6;
-            this.ColImporte.Name = "ColImporte";
-            this.ColImporte.ReadOnly = true;
-            this.ColImporte.Width = 110;
             // 
             // Facturacion
             // 

@@ -13,6 +13,7 @@ namespace Facturador
     public partial class Facturacion : VentanaProcesos
     {
         public static int contadorFila = 0;
+        public static double total;
         public Facturacion()
         {
             InitializeComponent();
@@ -93,6 +94,75 @@ namespace Facturador
                     }
                 }
             }
+            total = 0;
+            foreach (DataGridViewRow Fila in dataGridView1.Rows)
+            {
+                total += (double)Fila.Cells[4].Value;
+            }
+            lblTotal.Text = total.ToString();
+            txtCodigoProducto.Text = "";
+            txtDescripcion.Text = "";
+            txtPrecio.Text = "";
+            txtCantidad.Text = "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if(contadorFila > 0)
+            {
+                total = total - (Convert.ToDouble(dataGridView1.Rows[dataGridView1.CurrentRow.Index].Cells[4].Value));
+                lblTotal.Text = total.ToString();
+
+                dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+
+                contadorFila--;
+            }
+        }
+
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            ConsultarCliente consultarCliente = new ConsultarCliente();
+            consultarCliente.ShowDialog();
+
+            if(consultarCliente.DialogResult == DialogResult.OK)
+            {
+                txtCodigoCliente.Text = consultarCliente.dataGridView1.Rows[consultarCliente.dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+                txtCliente.Text = consultarCliente.dataGridView1.Rows[consultarCliente.dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
+                txtCodigoProducto.Focus();
+            }
+        }
+
+        private void btnProducto_Click(object sender, EventArgs e)
+        {
+            ConsultarProducto consultarProducto = new ConsultarProducto();
+            consultarProducto.ShowDialog();
+
+            if(consultarProducto.DialogResult == DialogResult.OK)
+            {
+                txtCodigoProducto.Text = consultarProducto.dataGridView1.Rows[consultarProducto.dataGridView1.CurrentRow.Index].Cells[0].Value.ToString();
+                txtDescripcion.Text = consultarProducto.dataGridView1.Rows[consultarProducto.dataGridView1.CurrentRow.Index].Cells[1].Value.ToString();
+                txtPrecio.Text = consultarProducto.dataGridView1.Rows[consultarProducto.dataGridView1.CurrentRow.Index].Cells[2].Value.ToString();
+                txtCantidad.Focus();
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            Nuevo();
+        }
+        public override void Nuevo()
+        {
+            txtCodigoCliente.Text = "";
+            txtCliente.Text = "";
+            txtCodigoProducto.Text = "";
+            txtDescripcion.Text = "";
+            txtPrecio.Text = "";
+            txtCantidad.Text = "";
+            lblTotal.Text = "0";
+            dataGridView1.Rows.Clear();
+            contadorFila = 0;
+            total = 0;
+            txtCodigoCliente.Focus();
         }
     }
 }
