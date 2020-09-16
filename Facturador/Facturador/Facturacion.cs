@@ -164,5 +164,36 @@ namespace Facturador
             total = 0;
             txtCodigoCliente.Focus();
         }
+
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            if(contadorFila != 0)
+            {
+                try
+                {
+                    string cmd = string.Format("Exec ActualizaFacturas '{0}'", txtCodigoCliente.Text.Trim());
+                    DataSet Ds = Utilidades.Ejecutar(cmd);
+
+                    String numFac = Ds.Tables[0].Rows[0]["NumFac"].ToString().Trim();
+
+                    foreach(DataGridViewRow Fila in dataGridView1.Rows)
+                    {
+                        cmd = string.Format("Exec ActualizaDetalles '{0}','{1}','{2}','{3}'",numFac,Fila.Cells[0].Value.ToString(), Fila.Cells[2].Value.ToString(), Fila.Cells[3].Value.ToString());
+                        Ds = Utilidades.Ejecutar(cmd);
+                    }
+                    cmd = "Exec DatosFactura " + numFac;
+
+                    Ds = Utilidades.Ejecutar(cmd);
+
+                    Reporte rp = new Reporte(Ds);
+                    rp.ShowDialog();
+                    Nuevo();
+                }
+                catch(Exception error)
+                {
+                    MessageBox.Show("Error: " + error.Message);
+                }
+            }
+        }
     }
 }
